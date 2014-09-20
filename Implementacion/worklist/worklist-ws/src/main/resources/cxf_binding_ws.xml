@@ -1,0 +1,9 @@
+<jaxws:bindings version="1.0" 
+              xmlns:jxb="http://java.sun.com/xml/ns/jaxb" 
+              xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
+              xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+              xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <jaxws:bindings  wsdlLocation="../webapp/WEB-INF/wsdl/bpm-btm-humantask.wsdl">
+        <jaxws:package name="pe.edu.upc.evolucion.bpm.btm.service.ws"/>
+    </jaxws:bindings>
+</jaxws:bindings>	

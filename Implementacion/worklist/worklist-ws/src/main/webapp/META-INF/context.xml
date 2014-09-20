@@ -1,0 +1,10 @@
+<Context path="/humantask-ws-api-0.0.1-SNAPSHOT" reloadable="true" cachingAllowed="false" antiResourceLocking="true">
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+    <Resource name="jdbc/bpm4sb" auth="Container" type="javax.sql.DataSource"
+          maxActive="100" maxIdle="30" maxWait="10000"
+          username="root" password="root" driverClassName="com.mysql.jdbc.Driver"
+          url="jdbc:mysql://10.0.0.110:3306/bpm4sb"/>
+    
+    <Transaction factory=""/>
+</Context>
