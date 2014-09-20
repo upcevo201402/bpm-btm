@@ -1,0 +1,90 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.network "public_network", ipv6:false
+  
+  config.vm.box = "oracle64"
+
+  # If true, then any SSH connections made will enable agent forwarding.
+  # Default value: false
+  config.ssh.forward_agent = true
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "1024"]
+  end
+
+  config.vm.synced_folder "F:/Instaladores/EVOLUCION", "/vagrant_data"
+  
+  config.vm.provision :puppet do |puppet|
+    puppet.module_path    = "modules"
+    puppet.options = "--verbose --hiera_config /vagrant/hiera.yaml"
+    puppet.manifests_path = "manifests"
+    puppet.facter = {
+      "is_vagrant" => true,
+    }
+  end 
+
+  config.vm.provider :virtualbox do |vb|
+    vb.gui = false
+    vb.customize ["modifyvm", :id, "--memory", "1024"]
+  end
+
+  # HTTP Server
+  
+  config.vm.define :lbserver do |cnf|
+    cnf.vm.hostname = "lbserver.home"
+    cnf.vm.network :private_network, ip: "10.0.0.0"
+    
+    config.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--name", "lbserver1"]
+    end
+  end 
+  
+# Servidor Web  
+  
+  config.vm.define :webserver do |cnf|
+    cnf.vm.hostname = "webserver.home"
+    cnf.vm.network :private_network, ip: "10.0.0.50"
+    
+    config.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--name", "webserver1"]
+    end
+  end     
+  
+# Servidor de Aplicaciones
+  
+  config.vm.define :appserver do |cnf|
+    cnf.vm.hostname = "appserver.home"
+    cnf.vm.network :private_network, ip: "10.0.0.51"
+    
+    config.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--name", "appserver1"]
+    end
+  end  
+
+# Servidor de Base de Datos
+  
+  config.vm.define :dbserver do |cnf|
+    cnf.vm.hostname = "dbserver.home"
+    cnf.vm.network :private_network, ip: "10.0.0.52"
+    
+    config.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--name", "mysqlsrvr1"]
+    end
+  end    
+
+ # Servidor GIT
+  
+  config.vm.define :gitserver do |cnf|
+    cnf.vm.hostname = "gitserver.home"
+    cnf.vm.network :private_network, ip: "10.0.0.80"
+    
+    config.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--name", "gitqlsrvr1"]
+    end
+  end    
+end

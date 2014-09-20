@@ -1,0 +1,7 @@
+# /vagrant/hieradata/dbserver.home.yaml
+---
+username: root
+password: root
+mysql_port: 3306
+classes:
+   - mysql

@@ -1,0 +1,11 @@
+# /vagrant/hieradata/appserver.home.yaml
+---
+username: root
+password: root
+glassfish_admin_port: 4848
+glassfish_admin_user: admin
+glassfish_http_port: 80
+glassfish_admin_user_pwd: welcome1
+install_directory: /u01/app/oracle/glassfish
+classes:
+   - glassfish
