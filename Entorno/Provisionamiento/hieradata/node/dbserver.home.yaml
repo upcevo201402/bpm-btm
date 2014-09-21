@@ -4,4 +4,4 @@ username: root
 password: root
 mysql_port: 3306
 classes:
-   - mysql
+   - mysql::initstd

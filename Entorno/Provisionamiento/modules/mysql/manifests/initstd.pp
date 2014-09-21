@@ -46,6 +46,6 @@ class mysql::initstd {
 	exec { 'enable_remote_root_access':
 		command => "mysql < /tmp/enable_remote.sql",
 		path	=>	'/usr/bin:/usr/sbin:/bin:/sbin',
-		require => File['/tmp/enable_remote.sql']
+		require => [File['/tmp/enable_remote.sql'], Service['mysqld']]
 	}	
 }

@@ -10,23 +10,28 @@ class mysql {
 	$root_password = hiera('mysql_root_pwd', 'root')
 	
 	Exec {
-		path	=>	'/usr/bin:/usr/sbin:/bin:/sbin'
+		path	=>	'/usr/bin:/usr/sbin:/bin:/sbin',
+		logoutput => true,
+		user => 'root'
+	}
+	
+	$old_packates_to_remove = ['mysql_libs']
+	package { $old_packates_to_remove:
+		ensure => absent,
 	}
 
 	exec { 'install_server_compat':
-		command => 'sudo rpm -i /vagrant_data/mysql/5.6.20/x86_64/mysql-shared-compat.rpm &',
-		logoutput => true
+		command => 'rpm -i /vagrant_data/mysql/5.6.20/x86_64/mysql-shared-compat.rpm',
+		require => Package[$old_packates_to_remove]
 	}
 
 	exec { 'install_server':
-		command => 'sudo rpm -i /vagrant_data/mysql/5.6.20/x86_64/mysql-server.rpm &',
-		logoutput => true,
+		command => 'rpm -i /vagrant_data/mysql/5.6.20/x86_64/mysql-server.rpm',
 		require => Exec['install_server_compat']
 	}
 	
 	exec { 'install_client':
-		command => 'sudo rpm -i /vagrant_data/mysql/5.6.20/x86_64/mysql-client.rpm &',
-		logoutput => true,
+		command => 'rpm -i /vagrant_data/mysql/5.6.20/x86_64/mysql-client.rpm',
 		require => Exec['install_server']
 	}
 
