@@ -1,0 +1,11 @@
+delete from QRTZ_LOCKS;
+delete from QRTZ_BLOB_TRIGGERS;
+delete from QRTZ_CALENDARS;
+delete from QRTZ_CRON_TRIGGERS;
+delete from QRTZ_FIRED_TRIGGERS;
+delete from QRTZ_JOB_DETAILS;
+delete from QRTZ_LOCKS;
+delete from QRTZ_PAUSED_TRIGGER_GRPS;
+delete from QRTZ_SCHEDULER_STATE;
+delete from QRTZ_SIMPROP_TRIGGERS;
+delete from QRTZ_TRIGGERS;
