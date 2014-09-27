@@ -7,7 +7,7 @@
     <artifactId>humantask-manager</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>BPMBTM :: HTaskManager</name>
+    <name>BPMBTM :: TaskManager</name>
     
     <properties>
         <java.version>1.6</java.version>
@@ -22,6 +22,7 @@
         <apache.cxf.version>3.0.1</apache.cxf.version>
         <jee.version>6.0</jee.version>
         <ejb.version>3.1</ejb.version>
+        <log4j.version>1.2.17</log4j.version>
 
         <!-- plugins versions -->
         <cxf.plugin.version>3.0.1</cxf.plugin.version>
@@ -55,6 +56,7 @@
     
     <modules>
         <module>worklist</module>
+        <module>worklist-mobile</module>
     </modules>
     
 </project>

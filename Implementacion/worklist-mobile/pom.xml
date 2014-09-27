@@ -3,18 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
-    <parent>
-        <groupId>pe.edu.upc.evolucion.bpm</groupId>
-        <artifactId>humantask-manager</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
-                	
+	
     <groupId>pe.edu.upc.evolucion.bpm</groupId>
     <artifactId>worklist</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>BPMBTM :: Worklist</name>
+    <name>BPMBTM :: Worklist Mobile</name>
 
     <properties>
         <junit.version>4.11</junit.version>
@@ -32,12 +26,6 @@
         <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
         <maven-surefire-plugin>2.17</maven-surefire-plugin>
         <cxf.plugin.version>3.0.1</cxf.plugin.version>
-        
-
-        <!--spring.bom.version>4.0.6.RELEASE</spring.bom.version>
-        <jta.version>1.1</jta.version>
-        <slf4j.version>1.5.2</slf4j.version>
-        <apache.cxf.version>3.0.1</apache.cxf.version-->
 
         <!-- plugins versions -->
         <cxf.plugin.version>3.0.1</cxf.plugin.version>
@@ -48,8 +36,7 @@
 
         <maven.ejb.plugin.version>2.3</maven.ejb.plugin.version>
         <maven.war.plugin.version>2.1.1</maven.war.plugin.version>
-        <maven.ear.plugin.version>2.9</maven.ear.plugin.version>             
-        
+        <maven.ear.plugin.version>2.9</maven.ear.plugin.version>                    
         
     </properties>
     
@@ -68,13 +55,5 @@
             <name>Spring GA Repository</name>
             <url>http://repo.spring.io/release</url>
         </repository>      
-    </repositories>
-    
-    <modules>
-        <module>worklist-dac</module>
-        <module>worklist-ws</module>
-        <module>worklist-portal</module>
-        <module>worklist-ejb</module>
-    </modules>
-    
+    </repositories>    
 </project>

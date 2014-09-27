@@ -14,7 +14,7 @@
     <artifactId>humantask-ws</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>bpm :: HTaskManager (WS)</name>
+    <name>BPMBTM :: HTaskManager (WS)</name>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
