@@ -1,0 +1,5 @@
+Se debe colocar por cada User Story un documento basado en la plantilla "Plantilla_UserStory" en la carpeta User_Stories.
+
+El nombre del archivo de la UserStory se debe corresponder con el siguiente esquema de nombrado:
+
+[Id-Feature]_[Id_UserStory].docx.
