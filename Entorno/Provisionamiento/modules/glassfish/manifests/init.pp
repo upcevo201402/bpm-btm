@@ -5,6 +5,7 @@ class glassfish {
 	$glassfish_admin_port = hiera('glassfish_admin_port')
 	$glassfish_admin_user = hiera('glassfish_admin_user')
 	$glassfish_http_port = hiera('glassfish_http_port')
+	$domain_name = hiera('domain_name','default')
 	
 	
 	Exec {
@@ -33,13 +34,18 @@ class glassfish {
 	}
 	
 	exec { 'install_glassfish':
-		command => "sh ${install_file} -a ${answer_file} -s &",
+		command => "sh ${install_file} -a ${answer_file} -l /tmp -s",
 		require => [File[$answer_file], File[$install_file], Exec['install_jdk'], Exec['create_install_directory']]
 	}
 	
 	firewall { '100 allow http access':
 		port   => [$glassfish_http_port, $glassfish_admin_port],
 		proto  => tcp,
-		action => accept,
-	}	
+		action => accept
+	}
+	
+	exec { 'create_domain':
+		command => "/u01/app/oracle/glassfish/bin/asadmin create-domain ${domain_name}",
+		require => Exec['install_glassfish']
+	}
 }
