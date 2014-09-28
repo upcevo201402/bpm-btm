@@ -196,7 +196,7 @@
                                     <wsdlOptions>
                                         <wsdlOption>
                                             <wsdl>${basedir}/src/main/webapp/WEB-INF/wsdl/bpm-btm-humantask.wsdl</wsdl>
-                                            <wsdlLocation>classpath:WEB-INF/wsdl/bpm-btm-humantask.wsdl</wsdlLocation>
+                                            <wsdlLocation>WEB-INF/wsdl/bpm-btm-humantask.wsdl</wsdlLocation>
                                             <serviceName>${inno.humantask.service.name}</serviceName>
                                             <extraargs>
                                                 <extraarg>-impl</extraarg>
@@ -255,7 +255,34 @@
                 </plugins>
             </build>
         </profile>
-    </profiles>
         
-    
+        <profile>
+            <id>functional_test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.smartbear.soapui</groupId>
+                        <artifactId>soapui-maven-plugin</artifactId>
+                        <version>4.6.1</version>
+                        <configuration>
+                            <projectFile>${basedir}/src/test/resources/humantask-ws-soapui-project.xml</projectFile>
+                            <testSuite>TestSuite_Sprint1</testSuite>
+                            <endpoint>http://localhost/humantask-ws-0.0.1-SNAPSHOT/services/TaskService</endpoint>
+                            <printReport>true</printReport>
+                            <outputFolder>${basedir}/target/{project.artifactId}</outputFolder>
+                            <junitReport>true</junitReport>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
