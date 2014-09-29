@@ -12,7 +12,7 @@ if versioncmp($::puppetversion,'3.6.1') >= 0 {
 hiera_include('classes','')
 
 node 'dbserver.home' { }
-node 'appserver.home' {}
+node 'appserver.home' { Class ['jrockit::usergroup'] -> Class ['jrockit::install7'] -> Class['glassfish::initcustom'] }
 node 'webserver.home' { Class ['jrockit::usergroup'] -> Class ['jrockit::install8'] }
 
 node 'lbserver.home' { }
