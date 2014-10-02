@@ -29,4 +29,5 @@ public class TaskManagerSessionBean implements TaskManagerSessionBeanLocal, Task
             throw new DenunciaException(String.format("%d - %s", ex.getErrorCode(), ex.getSQLState()));
         }
     }*/
+    
 }

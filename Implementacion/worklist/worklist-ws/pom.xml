@@ -267,7 +267,7 @@
                         <configuration>
                             <projectFile>${basedir}/src/test/resources/humantask-ws-soapui-project.xml</projectFile>
                             <testSuite>TestSuite_Sprint1</testSuite>
-                            <endpoint>http://localhost/humantask-ws-0.0.1-SNAPSHOT/services/TaskService</endpoint>
+                            <endpoint>http://10.0.0.51/humantask-ws-0.0.1-SNAPSHOT/services/TaskService</endpoint>
                             <printReport>true</printReport>
                             <outputFolder>${basedir}/target/{project.artifactId}</outputFolder>
                             <junitReport>true</junitReport>
