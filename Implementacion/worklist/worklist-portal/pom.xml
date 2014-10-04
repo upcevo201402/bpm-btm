@@ -20,25 +20,10 @@
     
     <properties>
         <spring-mobile.version>1.1.2.RELEASE</spring-mobile.version>
+        <servlet-api.version>2.5</servlet-api.version>
+        <jsp-api.version>2.1</jsp-api.version>
     </properties>
 	
-    <repositories>
-        <repository>
-            <id>repository.spring.release</id>
-            <name>Spring GA Repository</name>
-            <url>http://repo.spring.io/release</url>
-        </repository>         
-        <repository>
-            <id>Central Maven</id>
-            <url>http://repo1.maven.org/maven2</url>
-        </repository>
-        <repository>
-            <id>Maven.Repository</id>
-            <name>Maven Repository</name>
-            <url>http://repo.maven.apache.org/maven2/</url>
-        </repository>  
-     
-    </repositories>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -94,7 +79,7 @@
         <dependency>
             <groupId>org.springframework.mobile</groupId>
             <artifactId>spring-mobile</artifactId>
-            <version>1.1.2.RELEASE</version>
+            <version>${spring-mobile.version}</version>
             <type>zip</type>
             <classifier>dist</classifier>
         </dependency>        
@@ -104,20 +89,21 @@
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
-      
-        
+              
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
+            <version>${servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
+        
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
-            <version>2.1</version>
+            <version>${jsp-api.version}</version>
             <scope>provided</scope>
         </dependency>
+        
         <dependency>
             <groupId>org.easymock</groupId>
             <artifactId>easymock</artifactId>
