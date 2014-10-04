@@ -49,17 +49,8 @@ class glassfish::initcustom {
 		action => accept
 	}
 	
-#	exec { 'create_domain':
-#		command => "${install_directory}/bin/asadmin create-domain ${domain_name}",
+#	exec { 'create_service':
+#		command => "${install_directory}/bin/asadmin create-service ${domain_name}",
 #		require => Exec['install_glassfish']
 #	}
-	exec { 'create_domain':
-		command => "${install_directory}/bin/asadmin  create-service ${domain_name}",
-		require => Exec['install_glassfish']
-	}
-	
-	service { 'GlassFish_default':
-		ensure => running,
-		enable => true
-	}
 }
