@@ -127,7 +127,7 @@
     </dependencies>
 
     <build>
-        <finalName>MTPEBolsaEmpleo</finalName>
+        <finalName>BPMWorklist</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

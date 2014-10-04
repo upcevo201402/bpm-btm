@@ -46,7 +46,7 @@
         <bean class="org.springframework.mobile.device.switcher.SiteSwitcherHandlerInterceptor" factory-method="urlPath">
             <constructor-arg value="/m" />
             <constructor-arg value="/t" />
-            <constructor-arg value="/MTPEBolsaEmpleo" />
+            <constructor-arg value="/BPMWorklist" />
         </bean>
     </mvc:interceptors>
      
