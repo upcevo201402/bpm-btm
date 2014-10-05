@@ -28,9 +28,9 @@
         <junit.version>4.11</junit.version>
         <apache.cxf.version>3.0.1</apache.cxf.version>
         <jee.version>6.0</jee.version>
-        <ejb.version>3.1</ejb.version>
         <log4j.version>1.2.17</log4j.version>
-        <slf4j.version>1.7.7</slf4j.version>        
+        <slf4j.version>1.7.7</slf4j.version>     
+        <lombok.version>1.14.8</lombok.version> 
     </properties>
 
     <modules>

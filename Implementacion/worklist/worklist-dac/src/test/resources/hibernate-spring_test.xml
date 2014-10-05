@@ -22,7 +22,7 @@
         base-package="pe.edu.upc.evolucion.bpm.taskmanager.dac.dao"/>
     <tx:annotation-driven  transaction-manager="transactionManager"/>
 
-    <!--tx:jta-transaction-manager /-->	
+    <tx:jta-transaction-manager />	
  
     <bean id="entityManagerFactory" 
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -33,12 +33,21 @@
         <property name="jpaVendorAdapter" 
                   ref="jpaVendorAdapter"/>
     </bean>
+    
+    <bean id="transactionManager" 
+        class="org.springframework.orm.jpa.JpaTransactionManager">
+         <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
  
-    <!--bean id="transactionManager" 
-    class="org.springframework.orm.hibernate3.HibernateTransactionManager"/-->    
  
+    <!--bean name="localSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"/>
+    <bean id="transactionManager" 
+        class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+         <property name="sessionFactory" value="localSessionFactory"/>
+    </bean-->
+
     <bean id="persistenceExceptionTranslationPostProcessor"
-          class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />	  
+          class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>	  
 		  
     <bean id="jpaVendorAdapter" 
           class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">

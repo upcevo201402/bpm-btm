@@ -8,7 +8,7 @@ import javax.ejb.TransactionManagementType;
 import javax.interceptor.Interceptors;
 import org.springframework.ejb.interceptor.SpringBeanAutowiringInterceptor;
 
-@Stateless(name = "TaskManagerSessionBean", mappedName = "ejb/TaskManagerSessionBean")
+@Stateless(name = "TaskManager", mappedName = "ejb/TaskManagerSessionBean")
 @TransactionManagement(TransactionManagementType.CONTAINER)
 @Interceptors(SpringBeanAutowiringInterceptor.class)
 public class TaskManagerSessionBean implements TaskManagerSessionBeanLocal, TaskManagerSessionBeanRemote {

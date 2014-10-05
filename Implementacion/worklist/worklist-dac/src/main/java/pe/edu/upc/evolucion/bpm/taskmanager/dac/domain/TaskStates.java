@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
@@ -20,26 +22,11 @@ import javax.persistence.Table;
 public class TaskStates implements Serializable {
     @Id
     @Column(name="STATEID")
-    private Integer stateId;
+    @Setter @Getter private Integer stateId;
+    
     @Column(name="STATE")
-    private String state;
+    @Setter @Getter private String state;
 
     public TaskStates() {
-    }
-
-    public Integer getStateId() {
-        return stateId;
-    }
-
-    public void setStateId(Integer stateId) {
-        this.stateId = stateId;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
     }    
 }

@@ -29,13 +29,18 @@
                 <version>${maven.ear.plugin.version}</version>
                 
                 <configuration>
-                    <version>5</version>
+                    <version>6</version>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
                     <modules>
                         <ejbModule>
                             <groupId>${project.groupId}</groupId>
                             <artifactId>worklist-ejb</artifactId>
                         </ejbModule>
+                        <!--webModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>worklist-portal</artifactId>
+                            <contextRoot>/BPMWorklist</contextRoot>
+                        </webModule-->
                     </modules>
                 </configuration>
             </plugin>
@@ -43,7 +48,7 @@
     </build>
     
     <dependencies>
-        <!--dependency>
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
@@ -77,11 +82,19 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>worklist-dac</artifactId>
             <version>${project.version}</version>
-        </dependency-->     
+        </dependency>     
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>worklist-ejb</artifactId>
             <version>${project.version}</version>
+            <type>ejb</type>
         </dependency>
+        
+        <!--dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>worklist-portal</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency-->
     </dependencies>
 </project>

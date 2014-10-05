@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
-  <persistence-unit name="default">
+  <persistence-unit name="default"  transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskStates</class>
+    <class>pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.UserPreference</class>
+    <class>pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskDefinition</class>
+    <class>pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskInstance</class>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
       <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.WeblogicTransactionManagerLookup"/>

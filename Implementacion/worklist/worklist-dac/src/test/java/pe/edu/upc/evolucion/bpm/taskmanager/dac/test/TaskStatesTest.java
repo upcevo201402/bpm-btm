@@ -23,29 +23,10 @@ import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskStates;
 // http://docs.spring.io/spring-batch/reference/html/testing.html
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/hibernate-spring_test.xml"})
-public class TastStatesTest {
+public class TaskStatesTest {
     @Autowired
     IMasterDataService mds;
     
-    public TastStatesTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
     @Test
     public void taskStatesExists() throws DaoRepositoryException {
         assertTrue( mds.getAllTaskStates().size() > 0);

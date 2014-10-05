@@ -5,55 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 	
     <groupId>pe.edu.upc.evolucion.bpm</groupId>
-    <artifactId>worklist</artifactId>
+    <artifactId>worklist-mobilr</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>BPMBTM :: Worklist Mobile</name>
 
-    <properties>
-        <junit.version>4.11</junit.version>
-        <spring.bom.version>4.1.0.RELEASE</spring.bom.version>
-        <jta.version>1.1</jta.version>
-        <mysql.version>5.1.32</mysql.version>
-        <hibernate.version>4.3.6.Final</hibernate.version>
-        <hibernate-jpa.version>1.0.0.Final</hibernate-jpa.version>
-        <java.version>1.6</java.version>
-        <slf4j.version>1.7.7</slf4j.version>
-        <apache.cxf.version>3.0.1</apache.cxf.version>
-        <jee.version>6.0</jee.version>
-        <ejb.version>3.1</ejb.version>
-        <!-- plugins -->
-        <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
-        <maven-surefire-plugin>2.17</maven-surefire-plugin>
-        <cxf.plugin.version>3.0.1</cxf.plugin.version>
-
-        <!-- plugins versions -->
-        <cxf.plugin.version>3.0.1</cxf.plugin.version>
-        <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
+    <modules>
         
-        <maven.dependency.plugin.version>2.8</maven.dependency.plugin.version>
-        <maven.surefire.plugin.version>2.17</maven.surefire.plugin.version>
-
-        <maven.ejb.plugin.version>2.3</maven.ejb.plugin.version>
-        <maven.war.plugin.version>2.1.1</maven.war.plugin.version>
-        <maven.ear.plugin.version>2.9</maven.ear.plugin.version>                    
-        
-    </properties>
-    
-    <repositories>
-        <repository>
-            <id>Central Maven</id>
-            <url>http://repo1.maven.org/maven2</url>
-        </repository>
-        <repository>
-            <id>Maven.Repository</id>
-            <name>Maven Repository</name>
-            <url>http://repo.maven.apache.org/maven2/</url>
-        </repository>  
-        <repository>
-            <id>repository.spring.release</id>
-            <name>Spring GA Repository</name>
-            <url>http://repo.spring.io/release</url>
-        </repository>      
-    </repositories>    
+    </modules>
 </project>

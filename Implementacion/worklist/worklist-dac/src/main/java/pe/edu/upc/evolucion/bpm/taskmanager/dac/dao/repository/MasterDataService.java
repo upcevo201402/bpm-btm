@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.BaseDao;
 import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskStates;
 
@@ -14,6 +15,7 @@ import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskStates;
  * @author USUARIO
  */
 @Service(value = "mds")
+@Transactional
 public class MasterDataService implements IMasterDataService {
 
     private Logger log = Logger.getLogger(MasterDataService.class.getName());
