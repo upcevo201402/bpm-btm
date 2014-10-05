@@ -87,32 +87,7 @@
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http</artifactId>
             <version>${apache.cxf.version}</version>
-        </dependency>
-        
-        <!--dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.1-api</artifactId>
-            <version>${hibernate-jpa.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>com.innovaswc.bpm4sb</groupId>
-            <artifactId>humantask-api-ejb</artifactId>
-            <version>${project.version}</version>            
-        </dependency>
-        
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>humantask-api-ejb</artifactId>
-            <version>${project.version}</version>
-            <classifier>client</classifier>
-        </dependency-->        
+        </dependency>  
     </dependencies>
 	
     <build>
