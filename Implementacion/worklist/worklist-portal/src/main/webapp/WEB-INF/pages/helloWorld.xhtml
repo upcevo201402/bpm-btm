@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<ui:composition template="template.xhtml"   
+<ui:composition template="../template.xhtml"   
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:fn="http://java.sun.com/jsp/jstl/functions"
@@ -23,7 +23,7 @@
                              requiredMessage="Please insert a valid hobby">
                     <f:validateLength minimum="3" />
                 </p:inputText> &nbsp;
-                <p:commandButton value="Make it official" action="#{hobbyHandler.insertHobby()}" update="@form" validateClient="true" process="@form"
+                <p:commandButton value="Make it official" action="#{hobbyHandler.insertHobby}" update="@form" validateClient="true" process="@form"
                                  onstart="PF('hobbyInfoMask').block();" oncomplete="PF('hobbyInfoMask').unblock();" />
 
                 <pe:blockUI widgetVar="hobbyInfoMask" target="foundHobbies,maskEmptyPanel" >

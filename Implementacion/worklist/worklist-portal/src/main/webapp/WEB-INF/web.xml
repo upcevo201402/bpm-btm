@@ -33,12 +33,6 @@
         <param-value>true</param-value>
     </context-param>
     
-    <!--servlet>
-        <servlet-name>Faces Servlet</servlet-name>
-        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet-->
-    
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -56,25 +50,27 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-  
+
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+        
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
         <url-pattern>/m/*</url-pattern>
         <url-pattern>/t/*</url-pattern>
-        <!--url-pattern>/faces/*</url-pattern>
-        <url-pattern>*.jsf</url-pattern>
-        <url-pattern>*.htm</url-pattern>
-        <url-pattern>*.xhtml</url-pattern-->
     </servlet-mapping>
     
-    <!--servlet-mapping>
+    <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
         <url-pattern>*.jsf</url-pattern>
         <url-pattern>*.htm</url-pattern>
         <url-pattern>*.xhtml</url-pattern>
-    </servlet-mapping-->
+    </servlet-mapping>
     
     <filter>
         <filter-name>characterEncodingFilter</filter-name>
@@ -91,10 +87,10 @@
         <filter-class>org.omnifaces.filter.FacesExceptionFilter</filter-class>
     </filter>
     
-    <!--filter-mapping>
+    <filter-mapping>
         <filter-name>facesExceptionFilter</filter-name>
         <servlet-name>facesServlet</servlet-name>
-    </filter-mapping-->
+    </filter-mapping>
     
     <filter>
         <filter-name>gzipResponseFilter</filter-name>
@@ -114,6 +110,6 @@
     
     <welcome-file-list>
         <!--welcome-file>index.jsp</welcome-file-->
-        <welcome-file>homepage</welcome-file>
+        <welcome-file>/</welcome-file>
     </welcome-file-list>
 </web-app>

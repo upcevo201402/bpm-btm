@@ -29,7 +29,7 @@
                 <version>${maven.ear.plugin.version}</version>
                 
                 <configuration>
-                    <version>6</version>
+                    <version>5</version>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
                     <modules>
                         <ejbModule>
@@ -77,6 +77,12 @@
             <artifactId>slf4j-simple</artifactId>
             <version>${slf4j.version}</version>
         </dependency>  
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>            
         
         <dependency>
             <groupId>${project.groupId}</groupId>
