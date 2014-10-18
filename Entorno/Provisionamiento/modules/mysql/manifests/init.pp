@@ -5,7 +5,7 @@
 # == Authors
 #
 # Ilver Anache <ilver.anache@gmail.com>
-class mysql {
+class mysql ($version = hiera('mysql_version', '5.6.20'), $architecture=hiera('mysql_architecture', 'x86_64')) {
 	$root_user = hiera('mysql_root_user', 'root')
 	$root_password = hiera('mysql_root_pwd', 'root')
 	
@@ -21,17 +21,17 @@ class mysql {
 	}
 
 	exec { 'install_server_compat':
-		command => 'rpm -i /vagrant_data/mysql/5.6.20/x86_64/mysql-shared-compat.rpm',
+		command => "rpm -i /vagrant_data/mysql/${version}/${architecture}/mysql-shared-compat.rpm",
 		require => Package[$old_packates_to_remove]
 	}
 
 	exec { 'install_server':
-		command => 'rpm -i /vagrant_data/mysql/5.6.20/x86_64/mysql-server.rpm',
+		command => "rpm -i /vagrant_data/mysql/${version}/${architecture}/mysql-server.rpm",
 		require => Exec['install_server_compat']
 	}
 	
 	exec { 'install_client':
-		command => 'rpm -i /vagrant_data/mysql/5.6.20/x86_64/mysql-client.rpm',
+		command => "rpm -i /vagrant_data/mysql/${version}/${architecture}/mysql-client.rpm",
 		require => Exec['install_server']
 	}
 

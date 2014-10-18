@@ -3,5 +3,7 @@
 username: root
 password: root
 mysql_port: 3306
+mysql_version: 5.6.20
+mysql_architecture: x86_64
 classes:
    - mysql::initstd

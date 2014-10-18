@@ -9,6 +9,7 @@ class glassfish::initcustom {
 
 	$install_dir = hiera('install_directory')
 	$glassfish_admin_user_pwd = hiera('glassfish_admin_user_pwd')
+	$glassfish_version = hiera('glassfish_version')
 	$glassfish_admin_port = hiera('glassfish_admin_port')
 	$glassfish_admin_user = hiera('glassfish_admin_user')
 	$glassfish_http_port = hiera('glassfish_http_port')
@@ -27,7 +28,7 @@ class glassfish::initcustom {
 		content => template('glassfish/gf_answer.erb')
 	}
 	
-	$install_file = "/vagrant_data/glassfish/ogs-3.1.2.2-unix.sh"
+	$install_file = "/vagrant_data/glassfish/ogs-${glassfish_version}-unix.sh"
 	file { $install_file:
 		ensure => present,
 		mode => "+x",
