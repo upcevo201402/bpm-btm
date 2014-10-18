@@ -19,6 +19,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>        
         <flyway-maven-plugin.version>3.0</flyway-maven-plugin.version>
+        <mysqldb.host>192.168.1.40</mysqldb.host>
+        <mysql.username>root</mysql.username>
+        <mysql.password>root</mysql.password>
+        <schema.name>bpmbtm</schema.name>
+        <flyway.locations>filesystem:${basedir}/src/main/resources/db/migration</flyway.locations>
     </properties>
     
     <dependencyManagement>
@@ -140,16 +145,11 @@
     </dependencies>
         
     <build>
-        <plugins>            
+        <plugins>
             <plugin>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-maven-plugin</artifactId>
-                <version>${flyway-maven-plugin.version}</version>
-                <configuration>
-                    <url>jdbc:mysql://10.0.0.52:3306/bpmbtm</url>
-                    <user>root</user>
-                    <password>root</password>
-                </configuration>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sql-maven-plugin</artifactId>
+                <version>1.5</version>
                 <dependencies>
                     <dependency>
                         <groupId>mysql</groupId>
@@ -159,9 +159,44 @@
                 </dependencies>
                 <executions>
                     <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <driver>com.mysql.jdbc.Driver</driver>
+                            <url>jdbc:mysql://${mysqldb.host}:3306/</url>
+                            <username>${mysql.username}</username>
+                            <password>${mysql.password}</password>
+                            <sqlCommand>
+                                create database if not exists ${schema.name};
+                            </sqlCommand>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>${flyway-maven-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                    </dependency>
+                </dependencies>                
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
                         <goals>
                             <goal>migrate</goal>
                         </goals>
+                        <configuration>
+                            <url>jdbc:mysql://${mysqldb.host}:3306/${schema.name}</url>
+                            <user>${mysql.username}</user>
+                            <password>${mysql.password}</password>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -181,7 +216,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin.version}</version>
                 <configuration>
-                    <skipTests>false</skipTests>
+                    <skipTests>${skipTests}</skipTests>
                 </configuration>
             </plugin>
         </plugins>

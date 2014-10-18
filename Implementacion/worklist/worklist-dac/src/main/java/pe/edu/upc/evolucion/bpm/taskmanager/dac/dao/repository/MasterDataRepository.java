@@ -16,9 +16,9 @@ import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskStates;
  */
 @Service(value = "mds")
 @Transactional
-public class MasterDataService implements IMasterDataService {
+public class MasterDataRepository implements IMasterDataRepository {
 
-    private Logger log = Logger.getLogger(MasterDataService.class.getName());
+    private Logger log = Logger.getLogger(MasterDataRepository.class.getName());
 
     @Autowired
     private BaseDao<Integer, TaskStates> dao;

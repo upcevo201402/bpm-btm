@@ -10,6 +10,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.repository.DaoRepositoryException;
 import pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.repository.IMasterDataRepository;
+import pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.repository.ITaskInstancesRepository;
+import pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.repository.ITaskRepository;
+import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskDefinition;
 import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskStates;
 
 /**
@@ -19,19 +22,15 @@ import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskStates;
 // http://docs.spring.io/spring-batch/reference/html/testing.html
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/hibernate-spring_test.xml"})
-public class TaskStatesTest {
+public class TaskTest {
     @Autowired
-    IMasterDataRepository mds;
+    ITaskInstancesRepository mds;
     
     @Test
-    public void taskStatesExists() throws DaoRepositoryException {
-        assertTrue( mds.getAllTaskStates().size() > 0);
+    public void successfulTaskCreation() throws DaoRepositoryException {
+        TaskDefinition taskDef = new TaskDefinition();
+        taskDef.setName(null);
+        String taskId = mds.createTask(taskDef);        
     }
     
-    @Test
-    public void createdStateExists() throws DaoRepositoryException {
-        TaskStates state = mds.getTaskStateById(1);
-        assertNotNull( state );
-        assertEquals("CREATED", state.getState());
-    }
 }

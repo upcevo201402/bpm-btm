@@ -121,6 +121,29 @@
                     </clientExcludes>
                 </configuration>                                
             </plugin>
+
+            <!--plugin>
+                <groupId>org.glassfish.maven.plugin</groupId>
+                <artifactId>maven-glassfish-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <user>admin</user>
+                    <adminPassword>password</adminPassword>
+                    <glassfishDirectory>/opt/glassfishv3/</glassfishDirectory>
+                    <components>
+                        <component>
+                            <name>${project.artifactId}</name>
+                            <artifact>${project.build.directory}/${project.build.finalName}.war</artifact>
+                        </component>
+                    </components>
+                    <domain>
+                        <name>${project.artifactId}</name>
+                        <adminPort>4848</adminPort>
+                        <httpPort>8080</httpPort>
+                        <httpsPort>8443</httpsPort>
+                    </domain>
+                </configuration>
+            </plugin-->
         </plugins>
     </build>
 </project>

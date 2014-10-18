@@ -15,8 +15,8 @@ import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.UserPreference;
  */
 @Service(value = "userPreferences")
 @Transactional
-public class UserPreferencesService implements IUserPreferencesService {
-    private static final Logger log = Logger.getLogger(UserPreferencesService.class.getName());
+public class UserPreferencesRepository implements IUserPreferencesRepository {
+    private static final Logger log = Logger.getLogger(UserPreferencesRepository.class.getName());
 
     @Autowired
     private BaseDao<String, UserPreference> dao;

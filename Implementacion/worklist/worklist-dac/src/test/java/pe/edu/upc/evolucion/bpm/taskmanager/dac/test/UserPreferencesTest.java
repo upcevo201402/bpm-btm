@@ -9,7 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.repository.DaoRepositoryException;
-import pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.repository.IUserPreferencesService;
+import pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.repository.IUserPreferencesRepository;
 import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.UserPreference;
 
 /**
@@ -22,7 +22,7 @@ import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.UserPreference;
 public class UserPreferencesTest {
 
     @Autowired
-    IUserPreferencesService userPreferences;
+    IUserPreferencesRepository userPreferences;
 
     /**
      * Verifica la existencia de un usuario previamente registrado.
