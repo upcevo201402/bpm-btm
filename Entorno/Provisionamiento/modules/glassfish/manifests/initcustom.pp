@@ -20,6 +20,7 @@ class glassfish::initcustom {
 	Exec {
 		path 	=> "/usr/bin:/bin:/usr/sbin:/sbin",
 		logoutput  => true,
+		timeout => 0,
 		user 	=> 'root'
 	}
 	
@@ -50,8 +51,27 @@ class glassfish::initcustom {
 		action => accept
 	}
 	
-#	exec { 'create_service':
-#		command => "${install_directory}/bin/asadmin create-service ${domain_name}",
-#		require => Exec['install_glassfish']
-#	}
+	$glassfish_service = "glassfish_${domain_name}"
+	$glassfish_service_file = "/etc/init.d/${glassfish_service}"
+	file { $glassfish_service_file:
+		content => template('glassfish/glassfish_service.erb'),
+		mode => "+x",
+		owner => root
+	}
+
+	$configure_server = '/tmp/configure_server.sh'
+	file { $configure_server:
+		content => template('glassfish/configure_server.erb')
+	}
+		
+	exec { $configure_server:
+		command => "sh ${configure_server}",
+		require => [File[$glassfish_service_file], Exec['install_glassfish']]
+	}
+	
+	service { $glassfish_service:
+		ensure => running,
+		enable => true,
+		require => Exec[$configure_server]
+	}
 }
