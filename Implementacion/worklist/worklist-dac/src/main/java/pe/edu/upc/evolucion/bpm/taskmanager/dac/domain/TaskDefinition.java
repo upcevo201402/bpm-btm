@@ -19,7 +19,7 @@ import lombok.Setter;
  * @author USUARIO
  */
 @Entity
-@Table(name = "BPMBTM_TASKINSTANCE")
+@Table(name = "BPMBTM_TASKDEF")
 @NamedQueries({
     @NamedQuery(name = "TaskDefinition.findAll", query = "from TaskDefinition d")
 })
@@ -29,7 +29,7 @@ public class TaskDefinition implements Serializable {
     @Column(name = "TASKDEFID")
     @Setter
     @Getter
-    private Integer id;
+    private String id;
 
     @Column(name = "NAME")
     @Setter
@@ -51,10 +51,10 @@ public class TaskDefinition implements Serializable {
     @Getter
     private String subTasksCreationPattern;
 
-    @Setter
+   /* @Setter
     @Getter
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = TaskDefinition.class)
-    private TaskDefinition parentTaskDefinition;
+    private TaskDefinition parentTaskDefinition;*/
 
     @Column(name = "PRIORITY")
     @Setter
@@ -99,7 +99,7 @@ public class TaskDefinition implements Serializable {
     @Column(name = "ACTUALOWNERREQUIRED")
     @Setter
     @Getter
-    private String actualOwnerRequired;
+    private Integer actualOwnerRequired;
 
     @OneToMany(mappedBy = "taskDef", targetEntity = TaskInstance.class, fetch = FetchType.LAZY)
     @Setter

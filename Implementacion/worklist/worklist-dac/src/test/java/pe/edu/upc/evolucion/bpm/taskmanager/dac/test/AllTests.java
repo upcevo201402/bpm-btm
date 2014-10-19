@@ -4,6 +4,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses(value = {TaskStatesTest.class, UserPreferencesTest.class})
+@Suite.SuiteClasses(value = {TaskStatesTest.class, UserPreferencesTest.class, TaskDefinitionTest.class})
 public class AllTests {
 }

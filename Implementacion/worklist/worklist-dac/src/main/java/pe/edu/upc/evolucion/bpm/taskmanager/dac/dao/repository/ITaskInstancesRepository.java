@@ -1,6 +1,6 @@
 package pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.repository;
 
-import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskDefinition;
+import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskInstance;
 
 /**
  *
@@ -20,7 +20,7 @@ public interface ITaskInstancesRepository {
      * @return 
      * @throws pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.repository.DaoRepositoryException 
      */
-    public String createTask(TaskDefinition taskDef) throws DaoRepositoryException;
+    public String createTask(TaskInstance taskDef) throws DaoRepositoryException;
     /**
      * 
      * @param taskId

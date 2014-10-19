@@ -26,7 +26,7 @@ import lombok.Getter;
 public class TaskInstance implements Serializable {
     @Id
     @Column(name = "TASKINSTANCEID")
-    @Setter @Getter private Integer id;
+    @Setter @Getter private String id;
     
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = TaskDefinition.class)
     @JoinColumn(name="TASKDEFID", nullable=false, updatable=false)

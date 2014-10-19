@@ -19,7 +19,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>        
         <flyway-maven-plugin.version>3.0</flyway-maven-plugin.version>
-        <mysqldb.host>192.168.1.40</mysqldb.host>
+        <mysqldb.host>10.0.0.52</mysqldb.host>
         <mysql.username>root</mysql.username>
         <mysql.password>root</mysql.password>
         <schema.name>bpmbtm</schema.name>
@@ -169,6 +169,7 @@
                             <username>${mysql.username}</username>
                             <password>${mysql.password}</password>
                             <sqlCommand>
+                                drop database if exists ${schema.name};
                                 create database if not exists ${schema.name};
                             </sqlCommand>
                         </configuration>

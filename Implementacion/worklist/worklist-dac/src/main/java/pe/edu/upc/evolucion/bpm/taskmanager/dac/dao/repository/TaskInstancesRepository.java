@@ -6,12 +6,13 @@
 package pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.repository;
 
 import java.sql.SQLException;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.BaseDao;
-import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskDefinition;
 import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskInstance;
 
 /**
@@ -19,6 +20,7 @@ import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskInstance;
  * @author USUARIO
  */
 @Service(value = "taskInstances")
+@Transactional
 public class TaskInstancesRepository implements ITaskInstancesRepository {
 
     private Logger log = Logger.getLogger(TaskInstancesRepository.class.getName());
@@ -45,8 +47,17 @@ public class TaskInstancesRepository implements ITaskInstancesRepository {
     }
 
     @Override
-    public String createTask(TaskDefinition taskDef) throws DaoRepositoryException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String createTask(TaskInstance taskDef) throws DaoRepositoryException {
+        try {
+            TaskInstance theTask = new TaskInstance();
+            taskDef.setId( UUID.randomUUID().toString() );
+            dao.insert(theTask);
+            
+            return theTask.getId();
+        } catch (SQLException ex) {
+            log.log(Level.SEVERE, null, ex);
+            throw new DaoRepositoryException("createTask");
+        }
     }
 
     @Override
@@ -55,8 +66,7 @@ public class TaskInstancesRepository implements ITaskInstancesRepository {
             TaskInstance theTask = dao.findByKey(taskId, TaskInstance.class);
             assert theTask != null : new DaoRepositoryException("setPriority", "Task not found");
         } catch (SQLException ex) {
-            Logger.getLogger(TaskInstancesRepository.class.getName()).log(Level.SEVERE, null, ex);
+            log.log(Level.SEVERE, null, ex);
         }
-
     }
 }
