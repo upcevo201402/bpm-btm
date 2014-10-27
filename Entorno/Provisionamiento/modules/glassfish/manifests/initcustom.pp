@@ -74,4 +74,7 @@ class glassfish::initcustom {
 		enable => true,
 		require => Exec[$configure_server]
 	}
+	
+# copy mysql jar
+# /u01/app/oracle/glassfish/glassfish/domains/default/lib/databases/	
 }
