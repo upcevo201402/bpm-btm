@@ -1,15 +1,11 @@
 package pe.edu.upc.evolucion.bpm.taskmanager.dac.domain;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +17,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "BPMBTM_TASKDEF")
 @NamedQueries({
-    @NamedQuery(name = "TaskDefinition.findAll", query = "from TaskDefinition d")
+    @NamedQuery(name = "TaskDefinition.findAll", query = "select d from TaskDefinition d")
 })
 public class TaskDefinition implements Serializable {
 
@@ -101,8 +97,8 @@ public class TaskDefinition implements Serializable {
     @Getter
     private Integer actualOwnerRequired;
 
-    @OneToMany(mappedBy = "taskDef", targetEntity = TaskInstance.class, fetch = FetchType.LAZY)
+    /*@OneToMany(mappedBy = "taskDef", targetEntity = TaskInstance.class, fetch = FetchType.LAZY)
     @Setter
     @Getter
-    private List<TaskInstance> instances;
+    private List<TaskInstance> instances;*/
 }

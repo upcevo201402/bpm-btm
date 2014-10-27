@@ -44,6 +44,76 @@
                     </modules>
                 </configuration>
             </plugin>
+            
+            <plugin>
+                <!-- http://www.hascode.com/2013/05/continuous-deployment-using-glassfish-jenkins-maven-and-git/ -->
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>1.4.10</version>
+                <configuration>
+                    <container>
+                        <!-- valores validos: http://cargo.codehaus.org/Glassfish+3.x -->
+                        <containerId>glassfish3x</containerId>
+                        <type>remote</type>
+                    </container>
+                    
+                    <configuration>
+                        <!-- existing, runtime, ... -->
+                        <type>runtime</type>
+                        <properties>
+                            <cargo.remote.username>admin</cargo.remote.username>
+                            <cargo.remote.password>welcome1</cargo.remote.password>
+                            <cargo.hostname>10.0.0.51</cargo.hostname>
+                            <cargo.glassfish.admin.port>4848</cargo.glassfish.admin.port>
+                        </properties>
+                    </configuration>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>deploy</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>redeploy</goal>
+                        </goals>
+                        
+                        <configuration>
+                            <deployables>
+                                <deployable>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>${project.artifactId}</artifactId>
+                                    <type>ear</type>
+                                </deployable>
+                            </deployables>
+
+                        </configuration>                        
+                    </execution>
+                </executions>
+                
+                <dependencies>
+                    <dependency>
+                        <groupId>org.glassfish.deployment</groupId>
+                        <artifactId>deployment-client</artifactId>
+                        <version>3.1.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin.version}</version>
+                <configuration>
+                    <skipTests>${skipTests}</skipTests>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>                        
+                </executions>
+            </plugin>
         </plugins>
     </build>
     
@@ -88,12 +158,27 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>worklist-dac</artifactId>
             <version>${project.version}</version>
+            <exclusions>
+                <!--exclusion>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-entitymanager</artifactId>
+                </exclusion>                
+                <exclusion>
+                    <artifactId>hibernate-jpa-2.1-api</artifactId>
+                    <groupId>org.hibernate.javax.persistence</groupId>
+                </exclusion-->
+            </exclusions>
         </dependency>     
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>worklist-ejb</artifactId>
             <version>${project.version}</version>
             <type>ejb</type>
+            <scope>provided</scope>
         </dependency>
         
         <!--dependency>
@@ -102,5 +187,26 @@
             <version>${project.version}</version>
             <type>war</type>
         </dependency-->
+        
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.glassfish.extras</groupId>
+            <artifactId>glassfish-embedded-all</artifactId>
+            <version>3.1.1</version>
+            <scope>test</scope>
+        </dependency>        
+        
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>${jee.version}</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 </project>

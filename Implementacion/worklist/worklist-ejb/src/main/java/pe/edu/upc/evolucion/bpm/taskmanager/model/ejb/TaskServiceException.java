@@ -6,16 +6,16 @@ import java.rmi.RemoteException;
  *
  * @author USUARIO
  */
-public class TaskManagerException extends RemoteException {    
-    public TaskManagerException() {
+public class TaskServiceException extends RemoteException {    
+    public TaskServiceException() {
         super();
     }
 
-    public TaskManagerException(String message) {
+    public TaskServiceException(String message) {
         super(message);
     }
 
-    public TaskManagerException(String message, Exception ex) {
+    public TaskServiceException(String message, Exception ex) {
         super(message, ex);
     }    
     

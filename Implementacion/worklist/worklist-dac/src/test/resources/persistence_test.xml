@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
-  <persistence-unit name="default"  transaction-type="RESOURCE_LOCAL">
-    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+  <persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
+    <!--provider>org.hibernate.ejb.HibernatePersistence</provider-->
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskStates</class>
     <class>pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.UserPreference</class>
     <class>pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskDefinition</class>
     <class>pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskInstance</class>
+    <class>pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskInstanceState</class>
+    <class>pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskInstanceEvent</class>
     <properties>
-      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-      <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.WeblogicTransactionManagerLookup"/>
-      <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-      <property name="hibernate.connection.url" value="jdbc:mysql://10.0.0.52:3306/bpmbtm?zeroDateTimeBehavior=convertToNull"/>
-      <property name="hibernate.connection.password" value="root"/>
-      <property name="hibernate.connection.username" value="root"/>
+      <!--property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.WeblogicTransactionManagerLookup"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://10.0.0.52:3306/bpmbtm?zeroDateTimeBehavior=convertToNull"/>
+            <property name="hibernate.connection.password" value="root"/>
+            <property name="hibernate.connection.username" value="root"/-->
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://10.0.0.52:3306/bpmbtm?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="root"/>
+      <property name="eclipselink.weaving" value="false"/>
     </properties>
   </persistence-unit>
 </persistence>

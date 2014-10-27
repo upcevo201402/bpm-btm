@@ -10,7 +10,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.repository.DaoRepositoryException;
 import pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.repository.IMasterDataRepository;
-import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskStates;
 
 /**
  *
@@ -26,12 +25,5 @@ public class TaskStatesTest {
     @Test
     public void taskStatesExists() throws DaoRepositoryException {
         assertTrue( mds.getAllTaskStates().size() > 0);
-    }
-    
-    @Test
-    public void createdStateExists() throws DaoRepositoryException {
-        TaskStates state = mds.getTaskStateById(1);
-        assertNotNull( state );
-        assertEquals("CREATED", state.getState());
     }
 }

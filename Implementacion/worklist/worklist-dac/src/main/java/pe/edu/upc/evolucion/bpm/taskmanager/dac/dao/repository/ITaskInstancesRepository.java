@@ -1,6 +1,7 @@
 package pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.repository;
 
 import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskInstance;
+import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskInstanceEvent;
 
 /**
  *
@@ -17,16 +18,49 @@ public interface ITaskInstancesRepository {
     /**
      * 
      * @param taskDef
+     * @param userName
      * @return 
      * @throws pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.repository.DaoRepositoryException 
      */
-    public String createTask(TaskInstance taskDef) throws DaoRepositoryException;
+    public String createTask(TaskInstance taskDef, String userName) throws DaoRepositoryException;
+    /**
+     * 
+     * @param user
+     * @param taskId
+     * @return
+     * @throws DaoRepositoryException 
+     */
+
+    /**
+     * 
+     * @param taskId
+     * @return
+     * @throws DaoRepositoryException 
+     */
+    TaskInstance getTask(String taskId) throws DaoRepositoryException;
+    /**
+     * 
+     * @param theTask
+     * @return
+     * @throws DaoRepositoryException 
+     */
+    TaskInstance saveTask(TaskInstance theTask) throws DaoRepositoryException;
+
+    /**
+     * 
+     * @param taskId
+     * @return
+     * @throws DaoRepositoryException 
+     */
+    TaskInstanceEvent getCurrentState(String taskId) throws DaoRepositoryException;
+    
     /**
      * 
      * @param taskId
      * @param newState
-     * @param userName 
-     * @throws pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.repository.DaoRepositoryException 
+     * @param userName
+     * @throws pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.repository.DaoRepositoryException
      */
-    public void changeState(String taskId, String newState, String userName) throws DaoRepositoryException;
+    void saveNewState(String taskId, TaskInstanceStateEnum newState, String userName, TaskOperationEnum operation) throws DaoRepositoryException;
+
 }

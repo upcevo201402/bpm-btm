@@ -7,7 +7,7 @@ import java.util.TimeZone;
  *
  * @author USUARIO
  */
-public interface ITaskContext extends java.io.Serializable {
+public interface TaskContext extends java.io.Serializable {
     /**
      *  identity context (typically realm) of the connected user
      * @return 

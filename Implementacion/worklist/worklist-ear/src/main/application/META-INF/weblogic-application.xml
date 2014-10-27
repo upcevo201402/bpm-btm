@@ -8,6 +8,7 @@
         <package-name>javax.wsdl.*</package-name>
         <package-name>antlr.*</package-name>
         <package-name>com.ctc.wstx.*</package-name>
+        <package-name>javax.persistence.*</package-name>
     </prefer-application-packages>
     
 </weblogic-application>

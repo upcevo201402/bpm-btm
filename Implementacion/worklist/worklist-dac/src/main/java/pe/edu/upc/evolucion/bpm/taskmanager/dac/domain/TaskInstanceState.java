@@ -15,18 +15,13 @@ import lombok.Setter;
  * @author USUARIO
  */
 @Entity
-@Table(name="BPMBTM_TASKINSTANCESTATE")
+@Table(name = "BPMBTM_TASKINSTANCESTATE")
 @NamedQueries({
-    @NamedQuery(name="TaskStates.findAll", query="from TaskStates d")
+    @NamedQuery(name="TaskInstanceState.findAll", query="select p from TaskInstanceState p")
 })
-public class TaskStates implements Serializable {
-    @Id
-    @Column(name="STATEID")
-    @Setter @Getter private Integer stateId;
-    
-    @Column(name="STATE")
-    @Setter @Getter private String state;
-
-    public TaskStates() {
-    }    
+public class TaskInstanceState implements Serializable {
+    @Id @Getter @Setter @Column(name="STATEID")
+    private Integer id;
+    @Getter @Setter @Column(name="STATE")
+    private String state;
 }

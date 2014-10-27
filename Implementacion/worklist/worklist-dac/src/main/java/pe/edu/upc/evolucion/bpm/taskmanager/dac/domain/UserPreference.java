@@ -7,49 +7,30 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+//import org.hibernate.annotations.Table;
 
 /**
  *
  * @author USUARIO
  */
 @Entity
-@Table(name="BPMBTM_USERPREFERENCES")
+@Table(name = "BPMBTM_USERPREFERENCES")
 @NamedQueries({
-    @NamedQuery(name="UserPreference.findAll", query="from UserPreference p")
+    @NamedQuery(name="UserPreference.findAll", query="select p from UserPreference p")
 })
 public class UserPreference implements Serializable {
-    @Id
-    @Column(name="USERID")
+    
+    @Id @Getter @Setter @Column(name="USERID")
     private String login;
-    @Column(name="NICKNAME")
+    @Getter @Setter @Column(name="NICKNAME")
     private String nickName;
-    @Column(name="LANGUAGE")
+    @Getter @Setter @Column(name="LANGUAGE")
+    private String language;
+    @Getter @Setter @Column(name="AVATAR")
     private byte [] avatar;
 
     public UserPreference() {
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
-    public byte[] getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(byte[] avatar) {
-        this.avatar = avatar;
     }
 }

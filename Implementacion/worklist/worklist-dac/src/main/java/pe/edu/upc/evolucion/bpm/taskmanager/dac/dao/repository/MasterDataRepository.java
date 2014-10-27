@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upc.evolucion.bpm.taskmanager.dac.dao.BaseDao;
-import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskStates;
+import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskInstanceEvent;
+import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskInstanceState;
 
 /**
  *
@@ -17,26 +18,29 @@ import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskStates;
 @Service(value = "mds")
 @Transactional
 public class MasterDataRepository implements IMasterDataRepository {
-
-    private Logger log = Logger.getLogger(MasterDataRepository.class.getName());
-
+    private static final Logger log = Logger.getLogger(MasterDataRepository.class.getName());
+    
     @Autowired
-    private BaseDao<Integer, TaskStates> dao;
+    private BaseDao<Integer, TaskInstanceEvent> daoTaskEvents;
+    
+    @Autowired
+    private BaseDao<Integer, TaskInstanceState> daoTaskStates;
 
     @Override
-    public List<TaskStates> getAllTaskStates() throws DaoRepositoryException {
+    public List<TaskInstanceState> getAllTaskStates() throws DaoRepositoryException {        
         try {
-            return dao.findByNamedQuery("TaskStates.findAll");
+            return daoTaskStates.findByNamedQuery("TaskInstanceState.findAll");
         } catch (SQLException ex) {
             log.log(Level.SEVERE, null, ex);
-            throw new DaoRepositoryException("TaskStates.findAll");
+            throw new DaoRepositoryException("TaskInstanceEvent.findAll");
         }
     }
 
     @Override
-    public TaskStates getTaskStateById(Integer stateId) throws DaoRepositoryException {
+    public TaskInstanceEvent getTaskEventsById(Integer stateId) throws DaoRepositoryException {
         try {
-            return dao.findByKey(stateId, TaskStates.class);
+            //TODO: Verificar la lógica de devolucion del estado de la tarea por Id
+            return daoTaskEvents.findByKey(stateId, TaskInstanceEvent.class);
         } catch (SQLException ex) {
             log.log(Level.SEVERE, null, ex);
             throw new DaoRepositoryException("TaskStates.findByKey");

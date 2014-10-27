@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
   <persistence-unit name="default" transaction-type="JTA">
-    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <!--provider>org.hibernate.ejb.HibernatePersistence</provider-->
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>jdbc/bpmbtm</jta-data-source>
     <properties>
-      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-      <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.WeblogicTransactionManagerLookup"/>
+      <!--property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/-->
+      <property name="eclipselink.weaving" value="false"/>
+      <!--property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.WeblogicTransactionManagerLookup"/-->
     </properties>
   </persistence-unit>
 </persistence>

@@ -19,6 +19,7 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>      
         <ejb.version>3.1</ejb.version>  
+        <glassfish-embedded-all.version>3.1.1</glassfish-embedded-all.version>
     </properties>
 
     <dependencies>       
@@ -58,55 +59,32 @@
             <artifactId>worklist-dac</artifactId>
             <version>${project.version}</version>
         </dependency>
-		
+        
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+        
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>${jee.version}</version>
-            <scope>provided</scope>
+            <scope>compile</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.glassfish.extras</groupId>
+            <artifactId>glassfish-embedded-all</artifactId>
+            <version>${glassfish-embedded-all.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     
     <build>
-        <plugins>
-            <!--plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.plugin.version}</version>
-                <configuration>
-                    <source>${java.source.version}</source>
-                    <target>${java.source.version}</target>
-                    <compilerArguments>
-                        <endorseddirs>${endorsed.dir}</endorseddirs>
-                    </compilerArguments>
-                </configuration>
-            </plugin>
-            
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>${maven.dependency.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${endorsed.dir}</outputDirectory>
-                            <silent>true</silent>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>javax</groupId>
-                                    <artifactId>javaee-endorsed-api</artifactId>
-                                    <version>${jee.version}</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin-->
+        <!--finalName>${project.build.finalName}</finalName-->
+        <plugins>            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ejb-plugin</artifactId>
@@ -121,29 +99,23 @@
                     </clientExcludes>
                 </configuration>                                
             </plugin>
-
-            <!--plugin>
-                <groupId>org.glassfish.maven.plugin</groupId>
-                <artifactId>maven-glassfish-plugin</artifactId>
-                <version>2.1</version>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin.version}</version>
                 <configuration>
-                    <user>admin</user>
-                    <adminPassword>password</adminPassword>
-                    <glassfishDirectory>/opt/glassfishv3/</glassfishDirectory>
-                    <components>
-                        <component>
-                            <name>${project.artifactId}</name>
-                            <artifact>${project.build.directory}/${project.build.finalName}.war</artifact>
-                        </component>
-                    </components>
-                    <domain>
-                        <name>${project.artifactId}</name>
-                        <adminPort>4848</adminPort>
-                        <httpPort>8080</httpPort>
-                        <httpsPort>8443</httpsPort>
-                    </domain>
+                    <skipTests>${skipTests}</skipTests>
                 </configuration>
-            </plugin-->
+                <executions>
+                    <execution>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>                        
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>

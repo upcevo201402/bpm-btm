@@ -21,7 +21,7 @@ import lombok.Getter;
 @Entity
 @Table(name="BPMBTM_TASKINSTANCE")
 @NamedQueries({
-    @NamedQuery(name="TaskInstance.findAll", query="from TaskInstance d")
+    @NamedQuery(name="TaskInstance.findAll", query="select t from TaskInstance t")
 })
 public class TaskInstance implements Serializable {
     @Id
@@ -37,4 +37,10 @@ public class TaskInstance implements Serializable {
     
     @Column(name = "PRIORITY")
     @Setter @Getter private Integer priority;
+    
+    @Column(name = "OUTCOME")
+    @Setter @Getter private String outcome;
+
+    @Column(name = "PARENTTASKID")
+    @Setter @Getter private String parentTaskId;
 }
