@@ -35,26 +35,32 @@ public class TaskInstanceEvent implements Serializable {
     @Getter
     @Setter
     Integer eventId;
+    
     private @Column(name = "TASKID")
     @Getter
     @Setter
     String taskId;
+    
     private @Column(name = "EVENTTIME")
     @Getter
     @Setter
     Date eventTime;
+    
     private @Column(name = "USERID")
     @Getter
     @Setter
     String userName;
+    
     private @Column(name = "EVENTTYPEID")
     @Getter
     @Setter
     Integer eventTypeId;
+    
     private @Column(name = "EVENTDATA")
     @Getter
     @Setter
     char[] blob;
+    
     private @Column(name = "STATEID")
     @Getter
     @Setter

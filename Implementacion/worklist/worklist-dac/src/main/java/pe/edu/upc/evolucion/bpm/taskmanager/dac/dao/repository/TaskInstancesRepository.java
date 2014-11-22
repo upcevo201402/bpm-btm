@@ -107,8 +107,8 @@ public class TaskInstancesRepository implements ITaskInstancesRepository {
             theEvent.setTaskId(taskId);
             theEvent.setEventTime(new Date(Calendar.getInstance().getTime().getTime()));
             theEvent.setBlob(null);
-            theEvent.setEventTypeId(operation.ordinal());
-            theEvent.setStateId(newState.ordinal());
+            theEvent.setEventTypeId(operation.getValue());
+            theEvent.setStateId(newState.getValue());
             theEvent.setUserName(userName);
             
             daoTaskInstEvents.update(theEvent);
