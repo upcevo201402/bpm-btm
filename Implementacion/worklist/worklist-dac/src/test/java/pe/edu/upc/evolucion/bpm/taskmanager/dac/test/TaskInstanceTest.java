@@ -34,6 +34,7 @@ public class TaskInstanceTest {
     @Test
     public void successfulTaskCreation() throws DaoRepositoryException {
         createDefinition();
+        
         TaskDefinition taskDef = taskDefRepository.getTasksDefinition().get(0);
 
         TaskInstance theTask = new TaskInstance();

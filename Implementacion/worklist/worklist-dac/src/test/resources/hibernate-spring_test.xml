@@ -51,9 +51,9 @@
 		  
     <bean id="jpaVendorAdapter" 
           class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
-        <property name="showSql" value="${hibernate.show_sql}" />
+        <!--property name="showSql" value="${hibernate.show_sql}" />
         <property name="generateDdl" value="${hibernate.generate_ddl}" />
-        <property name="databasePlatform" value="${hibernate.dialect}" />
+        <property name="databasePlatform" value="${hibernate.dialect}" /-->
     </bean>
 
 </beans>
