@@ -6,7 +6,7 @@ import pe.edu.upc.evolucion.bpm.taskmanager.dac.domain.TaskDefinition;
 /**
  *
  * @author USUARIO
- */
+ *//
 public interface ITaskDefinitionRepository {
 
     /**
