@@ -19,7 +19,6 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>      
         <ejb.version>3.1</ejb.version>  
-        <skipTests>true</skipTests>
         <glassfish-embedded-all.version>3.1.1</glassfish-embedded-all.version>
     </properties>
 
