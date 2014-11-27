@@ -5,6 +5,9 @@
     <artifactId>apppbtpm</artifactId>
     <version>0.0.1</version>
     <packaging>pom</packaging>
+    <modules>
+        <module>accesodato</module>
+    </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
