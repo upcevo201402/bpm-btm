@@ -9,7 +9,7 @@
    	http://www.springframework.org/schema/data/jpa 
    	http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"> 
 
-    <jpa:repositories base-package="pe.com.mg" />
+    <jpa:repositories base-package="pe.com.bpm.evo" />
 
     <bean id="dataSource"
               class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -31,7 +31,7 @@
         <property name="dataSource" ref="dataSource" />
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
         <!-- spring based scanning for entity classes -->
-        <property name="packagesToScan" value="pe.com.mg" />
+        <property name="packagesToScan" value="pe.com.bpm.evo" />
     </bean>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" />
@@ -40,7 +40,7 @@
     <context:annotation-config />
 
     <!-- For defining Spring Bean -->
-    <context:component-scan base-package="pe.com.mg"></context:component-scan>
+    <context:component-scan base-package="pe.com.bpm.evo"></context:component-scan>
 
 
     <bean id="jdbTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
