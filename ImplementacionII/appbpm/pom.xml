@@ -9,7 +9,8 @@
         <module>accesoDatos</module>
         <module>pruebasUnitarias</module>
         <module>logicaNegocio</module>
-    </modules>
+    <module>WebService</module>
+  </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
