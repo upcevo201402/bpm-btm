@@ -50,10 +50,10 @@ public class TaskDefinition implements Serializable {
     @Getter
     private String subTasksCreationPattern;
 
-   /* @Setter
+    @Setter
     @Getter
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = TaskDefinition.class)
-    private TaskDefinition parentTaskDefinition;*/
+    private TaskDefinition parentTaskDefinition;
 
     @Column(name = "PRIORITY")
     @Setter
